@@ -1,0 +1,47 @@
+/* body{
+    background-color: blanchedalmond;
+} */
+
+#hide{
+    visibility: hidden;
+}
+.hide{
+    visibility: hidden;
+}
+.bg{
+    background-color: royalblue;
+}
+.tbg{
+    color: royalblue;
+}
+.t-w-bg{
+    color: #fff;
+}
+
+.service_icon{
+    font-size: 50px;
+    color: royalblue;
+}
+
+/* print container css */
+
+@media print {
+    body *{
+        visibility: hidden;
+    }
+
+    .print_container *{
+        visibility: visible;
+    }
+    .print_container{
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+    }
+    print-area *{ /* can be whatever CSS selector you need */
+        transform: scale(70)
+    }
+}
+
+

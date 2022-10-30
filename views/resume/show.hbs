@@ -1,0 +1,119 @@
+<div class="row mt-5 mb-4">
+    <div class="col-md-9">
+        <div class="container print_container page">
+            <div class="row">
+                <div class="bg py-2">
+                    <h3 class="px-3" style="color: #fff;">{{resume.name}}</h3>
+                    <p class="px-3" style="color:#fff;">{{resume.p_type}}</p>
+                </div>
+                <div class="col-md-8 border p-4">
+                    <span class="border-bottom">{{{resume.profile}}}</span>
+                    <div class="py-2">
+                        <h4 class="border-bottom">Experience</h4>
+                        <p>{{{resume.exp}}}</p>
+                    </div>
+
+                    <div class="py-2">
+                        <h4 class="border-bottom">Education</h4>
+                        <p>{{{resume.edu}}}</p>
+                    </div>
+                    <div class="py-2">
+                        <h4 class="border-bottom">Certificates</h4>
+                        <p>{{{resume.certifi}}}</p>
+                    </div>
+                    <div class="py-2">
+                        <h4 class="border-bottom">Language</h4>
+                        <p>{{{resume.lang}}}</p>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 border">
+                    <div class="p-2">
+                        <h4 class="border-bottom">Personal Info</h4>
+                        <div>
+                            <p class="fw-bold">Phone</p>
+                            <span class="p-0">{{resume.phone}}</span>
+                        </div>
+                        <div>
+                            <p class="fw-bold">E-Mail</p>
+                            <p>{{resume.email}}</p>
+                        </div>
+                        <div>
+                            <p class="fw-bold">LinkedIn</p>
+                            <span class="p-0">{{resume.linkedin}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+                        <h4 class="border-bottom">Skills</h4>
+                        <p>{{{resume.skill}}}</p>
+                    </div>
+                    <div class="p-2">
+                        <h4 class="border-bottom">Projects</h4>
+                        <p>{{{resume.project}}}</p>
+                    </div>
+                    <div class="py-2">
+                        <h4 class="border-bottom">Hobbies</h4>
+                        <p>{{{resume.hobbies}}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3 mt-3 ">
+        <div class="text-center sticky-sm-top">
+            <a href="/resume/edit/{{resume._id}}" type="btn" class="btn btn-outline-danger">Edit or Update</a>
+            <a href="" type="btn" class="btn btn-outline-danger my-3" onclick="window.print();">Download as PDF</a>
+            <div class="form-group">
+                <div class="col-sm-offset-2">
+                    <a id="generate" type="btn" class="btn btn-outline-danger mb-2" onclick="showQr()">Generate
+                        QR-Code</a>
+                </div>
+            </div>
+
+            <div class="container-fluid" id="hide">
+                <div class="text-center">
+                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0"
+                        class="qr-code img-thumbnail img-responsive" />
+                </div>
+                <div class="form-horizontal hide">
+                    <div class="form-group my-2">
+                        <div class="">
+                            <input type="text" size="60" maxlength="50" class="form-control" id="content"
+                                placeholder="Enter content" value="https://localhost/3000/resume/{{resume._id}}" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    function showQr() {
+        document.getElementById("hide").style.visibility = "visible"
+    }
+    function htmlEncode(value) {
+        return $('<div/>').text(value)
+            .html();
+    }
+    $(function () {
+        $('#generate').click(function () {
+            let finalURL =
+                'https://chart.googleapis.com/chart?cht=qr&chl=' +
+                htmlEncode($('#content').val()) +
+                '&chs=160x160&chld=L|0'
+            $('.qr-code').attr('src', finalURL);
+        });
+    }); 
+</script>
