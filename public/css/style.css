@@ -42,6 +42,10 @@
     print-area *{ /* can be whatever CSS selector you need */
         transform: scale(70)
     }
+     @page {
+        size: A4 landscape;
+        margin:0;
+      }
 }
 
 
